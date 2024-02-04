@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "89367147471",
+    "project_id": "qr-code-b3cd8",
+    "storage_bucket": "qr-code-b3cd8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:89367147471:android:ba35a07e3e344ba7e598ba",
+        "android_client_info": {
+          "package_name": "com.example.qr_code"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1ihg6uqokfIWFKYwXiArMG_UbZ13xGzk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
