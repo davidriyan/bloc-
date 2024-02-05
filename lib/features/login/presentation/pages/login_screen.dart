@@ -16,7 +16,7 @@ class LoginScreen extends StatelessWidget {
           Center(
             child: ElevatedButton(
               onPressed: () {
-                context.go('/dashboardScreen');
+                context.go('/dashboard');
               },
               child: Text(
                 StringResources.TEXT_DASHBOARD,
@@ -26,7 +26,18 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
             ),
-          )
+          ),
+          ElevatedButton(
+              onPressed: () {
+                context.go('/allProduk');
+              },
+              child: Text(
+                StringResources.TEXT_ALL_PRODUK,
+                style: blacTextStyle.copyWith(
+                  fontSize: 16,
+                  fontWeight: medium,
+                ),
+              ))
         ],
       ),
     );
