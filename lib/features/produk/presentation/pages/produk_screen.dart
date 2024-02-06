@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:qr_code/config/string_resources.dart';
+import 'package:qr_code/router/router.dart';
 
 class ProdukScreen extends StatelessWidget {
   const ProdukScreen({super.key});
@@ -13,7 +14,19 @@ class ProdukScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           return ListTile(
             onTap: () {
-              context.go('/allProduk/${index + 1}');
+              context.goNamed(
+                Routes.detailProduk,
+                //! jika ingin melempar 1 data, gunakan pathParameters
+                pathParameters: {
+                  'id': '${index + 1}',
+                  'title': '${StringResources.TEXT_NOMOR_PRODUK} ${index + 1}'
+                },
+                //! jika ingin melempar lebih dari 1 data, gunakan queryParameters
+                // queryParameters: {
+                //   'id': '${index + 1}',
+                //   'title': '${StringResources.TEXT_NOMOR_PRODUK} ${index + 1}'
+                // },
+              );
             },
             leading: Text('${index + 1}'),
             title: Text(

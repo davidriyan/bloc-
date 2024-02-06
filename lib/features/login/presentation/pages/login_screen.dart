@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:qr_code/config/string_resources.dart';
+import 'package:qr_code/router/router.dart';
 import 'package:qr_code/utils/text_style.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -16,7 +17,7 @@ class LoginScreen extends StatelessWidget {
           Center(
             child: ElevatedButton(
               onPressed: () {
-                context.go('/dashboard');
+                context.goNamed(Routes.dasboard);
               },
               child: Text(
                 StringResources.TEXT_DASHBOARD,
@@ -28,16 +29,20 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
           ElevatedButton(
-              onPressed: () {
-                context.go('/allProduk');
-              },
-              child: Text(
-                StringResources.TEXT_ALL_PRODUK,
-                style: blacTextStyle.copyWith(
-                  fontSize: 16,
-                  fontWeight: medium,
-                ),
-              ))
+            onPressed: () {
+              //! routing menggunakan path
+              // context.go('/allProduk');
+              //! menggunakan go Named
+              context.goNamed(Routes.allProduk);
+            },
+            child: Text(
+              StringResources.TEXT_ALL_PRODUK,
+              style: blacTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: medium,
+              ),
+            ),
+          )
         ],
       ),
     );
