@@ -12,6 +12,9 @@ class BlocStateLogin extends BlocState {}
 
 class BlocStateLogout extends BlocState {}
 
-class BlocStateError extends BlocState {}
+class BlocStateError extends BlocState {
+  BlocStateError(this.message);
+  final String message;
+}
 
 class BlocStateLoading extends BlocState {}

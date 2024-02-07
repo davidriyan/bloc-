@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
 import 'package:qr_code/features/dashboard/presentation/pages/dashboard_screen.dart';
@@ -13,6 +15,7 @@ final router = GoRouter(
   errorBuilder: (context, state) => const ErrorScreen(),
   redirect: (context, state) {
     FirebaseAuth auth = FirebaseAuth.instance;
+    print(auth.currentUser);
     if (auth.currentUser == null) {
       return '/login';
     } else {

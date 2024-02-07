@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:qr_code/features/login/presentation/bloc/bloc.dart';
+import 'package:qr_code/router/router.dart';
 
 // ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
@@ -55,7 +57,27 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              child: const Text('Login'))
+              child: BlocConsumer<BlocBloc, BlocState>(
+                listener: (context, state) {
+                  if (state is BlocStateLogin) {
+                    context.goNamed(Routes.dashboard);
+                  }
+                  if (state is BlocStateError) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(state.message),
+                        duration: const Duration(seconds: 2),
+                      ),
+                    );
+                  }
+                },
+                builder: (context, state) {
+                  if (state is BlocStateLoading) {
+                    return const Text('Tunggu sebentar...');
+                  }
+                  return const Text('Login');
+                },
+              ))
         ],
       ),
     );
