@@ -1,48 +1,61 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:qr_code/config/string_resources.dart';
-import 'package:qr_code/router/router.dart';
-import 'package:qr_code/utils/text_style.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qr_code/features/login/presentation/bloc/bloc.dart';
 
+// ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+  LoginScreen({super.key});
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: ListView(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         children: [
-          Center(
-            child: ElevatedButton(
-              onPressed: () {
-                context.goNamed(Routes.dasboard);
-              },
-              child: Text(
-                StringResources.TEXT_DASHBOARD,
-                style: blacTextStyle.copyWith(
-                  fontSize: 16,
-                  fontWeight: medium,
-                ),
+          const SizedBox(height: 20),
+          TextField(
+            controller: emailController,
+            autocorrect: false,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(9),
               ),
             ),
           ),
-          ElevatedButton(
-            onPressed: () {
-              //! routing menggunakan path
-              // context.go('/allProduk');
-              //! menggunakan go Named
-              context.goNamed(Routes.allProduk);
-            },
-            child: Text(
-              StringResources.TEXT_ALL_PRODUK,
-              style: blacTextStyle.copyWith(
-                fontSize: 16,
-                fontWeight: medium,
+          const SizedBox(height: 20),
+          TextField(
+            controller: passwordController,
+            autocorrect: false,
+            obscureText: true,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(9),
               ),
             ),
-          )
+          ),
+          const SizedBox(height: 20),
+          ElevatedButton(
+              onPressed: () {
+                context.read<BlocBloc>().add(
+                      BlocEventLogin(
+                          emailController.text, passwordController.text),
+                    );
+              },
+              style: ButtonStyle(
+                padding: const MaterialStatePropertyAll(
+                  EdgeInsets.symmetric(vertical: 20),
+                ),
+                shape: MaterialStatePropertyAll(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(9),
+                  ),
+                ),
+              ),
+              child: const Text('Login'))
         ],
       ),
     );

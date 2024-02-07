@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qr_code/features/login/presentation/bloc/bloc.dart';
 import 'firebase_options.dart';
 import './router/router.dart';
 
@@ -16,10 +18,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(useMaterial3: false),
-      routerConfig: router,
+    return BlocProvider<BlocBloc>(
+      create: (context) => BlocBloc(),
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(useMaterial3: false),
+        routerConfig: router,
+      ),
     );
   }
 }
