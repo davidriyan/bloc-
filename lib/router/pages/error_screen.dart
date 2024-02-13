@@ -11,7 +11,7 @@ class ErrorScreen extends StatelessWidget {
       body: Center(
         child: Text(
           StringResources.TEXT_ERROR_SCREEN,
-          style: blacTextStyle.copyWith(
+          style: blackTextStyle.copyWith(
             fontSize: 20,
             fontWeight: bold,
           ),

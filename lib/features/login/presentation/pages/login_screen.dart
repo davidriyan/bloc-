@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:qr_code/config/string_resources.dart';
 import 'package:qr_code/features/login/presentation/bloc/bloc.dart';
 import 'package:qr_code/router/router.dart';
+import 'package:qr_code/utils/text_style.dart';
 
 // ignore: must_be_immutable
-class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
+
   TextEditingController passwordController = TextEditingController();
+
+  bool visibillity = true;
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +33,10 @@ class LoginScreen extends StatelessWidget {
             controller: emailController,
             autocorrect: false,
             decoration: InputDecoration(
+              hintText: StringResources.TEXT_INPUT_EMAIL,
+              hintStyle: blackTextStyle.copyWith(
+                overflow: TextOverflow.ellipsis,
+              ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(9),
               ),
@@ -32,8 +46,24 @@ class LoginScreen extends StatelessWidget {
           TextField(
             controller: passwordController,
             autocorrect: false,
-            obscureText: true,
+            obscureText: visibillity,
             decoration: InputDecoration(
+              suffixIcon: IconButton(
+                onPressed: () {
+                  setState(
+                    () {
+                      visibillity = !visibillity;
+                    },
+                  );
+                },
+                icon: Icon(
+                  visibillity ? Icons.visibility_off : Icons.visibility,
+                ),
+              ),
+              hintText: StringResources.TEXT_INPUT_PASSWORD,
+              hintStyle: blackTextStyle.copyWith(
+                overflow: TextOverflow.ellipsis,
+              ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(9),
               ),

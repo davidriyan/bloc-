@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:qr_code/utils/colors.dart';
 
 //! FontStyle
-TextStyle blacTextStyle = GoogleFonts.poppins(color: AppColors.mainColor);
+TextStyle blackTextStyle = GoogleFonts.poppins(color: AppColors.mainColor);
 
 //! FontWeight
 FontWeight light = FontWeight.w300;

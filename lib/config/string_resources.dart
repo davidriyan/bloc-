@@ -6,6 +6,8 @@ class StringResources {
   //! Login Screen
   static const String TEXT_DASHBOARD = "Dasboard";
   static const String TEXT_ALL_PRODUK = "Semua Produk";
+  static const String TEXT_INPUT_EMAIL = "Masukkan email anda";
+  static const String TEXT_INPUT_PASSWORD = "Masukkan password anda";
 
   //! Dashboard Screen
   static const String TEXT_TESTING = "HALLOOOO";
